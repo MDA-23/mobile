@@ -29,7 +29,7 @@ class RegisterPhonePage extends GetView<RegisterController> {
                 Row(
                   children: [
                     Text(
-                      "2/5: ",
+                      "2/4: ",
                       style: h5BTextStyle(
                         color: ColorConstants.slate[400],
                       ),
@@ -66,14 +66,21 @@ class RegisterPhonePage extends GetView<RegisterController> {
                   controller: controller.form['phone']!,
                   placeholder: "Contoh: 0812312312",
                   keyboardType: TextInputType.number,
+                  onChange: (e) {
+                    controller.form.refresh();
+                  },
                 ),
                 SizedBox(height: 80.h),
                 Expanded(child: Container()),
-                AppButton(
-                  onPressed: () {
-                    Get.toNamed(AppRoute.registerPhonePin);
-                  },
-                  text: "Selanjutnya",
+                Obx(
+                  () => AppButton(
+                    onPressed: controller.form['phone']!.text == ""
+                        ? null
+                        : () {
+                            Get.toNamed(AppRoute.registerPhonePin);
+                          },
+                    text: "Selanjutnya",
+                  ),
                 ),
                 SizedBox(height: 20.h),
               ],

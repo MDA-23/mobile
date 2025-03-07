@@ -21,62 +21,70 @@ class RegisterPasswordPage extends GetView<RegisterController> {
             padding: EdgeInsets.symmetric(
               horizontal: 20.w,
             ),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: [
-                SizedBox(height: 20.h),
-                Row(
-                  children: [
-                    Text(
-                      "3/5: ",
-                      style: h5BTextStyle(
-                        color: ColorConstants.slate[400],
+            child: Form(
+              key: controller.formPasswordKey,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  SizedBox(height: 20.h),
+                  Row(
+                    children: [
+                      Text(
+                        "4/4: ",
+                        style: h5BTextStyle(
+                          color: ColorConstants.slate[400],
+                        ),
                       ),
-                    ),
-                    Text(
-                      " Buat Password",
-                      style: h5BTextStyle(),
-                    ),
-                  ],
-                ),
-                SizedBox(height: 10),
-                RegisterProgress(currentStep: 3),
-                SizedBox(height: 20.h),
-                Image.asset("assets/images/register_password.png"),
-                SizedBox(height: 12.h),
-                Text(
-                  "Buat Password Livin' Merchant",
-                  style: h4BTextStyle(),
-                  textAlign: TextAlign.center,
-                ),
-                SizedBox(height: 8.h),
-                Text(
-                  "Pastikan passwordmu minimal 8 karakter.",
-                  style: body5TextStyle(
-                    color: ColorConstants.slate[400],
+                      Text(
+                        " Buat Password",
+                        style: h5BTextStyle(),
+                      ),
+                    ],
                   ),
-                  textAlign: TextAlign.center,
-                ),
-                SizedBox(height: 32.h),
-                AppInput(
-                  label: "Password",
-                  controller: TextEditingController(),
-                  obscureText: true,
-                ),
-                SizedBox(height: 12.h),
-                AppInput(
-                  label: "Konfirmasi Password",
-                  controller: TextEditingController(),
-                  obscureText: true,
-                ),
-                SizedBox(height: 40.h),
-                Expanded(child: Container()),
-                AppButton(
-                  onPressed: () {},
-                  text: "Selanjutnya",
-                ),
-                SizedBox(height: 20.h),
-              ],
+                  SizedBox(height: 10),
+                  RegisterProgress(currentStep: 4),
+                  SizedBox(height: 20.h),
+                  Image.asset("assets/images/register_password.png"),
+                  SizedBox(height: 12.h),
+                  Text(
+                    "Buat Password Livin' Merchant",
+                    style: h4BTextStyle(),
+                    textAlign: TextAlign.center,
+                  ),
+                  SizedBox(height: 8.h),
+                  Text(
+                    "Pastikan passwordmu minimal 8 karakter.",
+                    style: body5TextStyle(
+                      color: ColorConstants.slate[400],
+                    ),
+                    textAlign: TextAlign.center,
+                  ),
+                  SizedBox(height: 32.h),
+                  AppInput(
+                    label: "Password",
+                    controller: controller.form['password']!,
+                    obscureText: true,
+                    placeholder: "Input Password",
+                    validator: controller.passwordValidator,
+                    textInputAction: TextInputAction.next,
+                  ),
+                  SizedBox(height: 12.h),
+                  AppInput(
+                    label: "Konfirmasi Password",
+                    placeholder: "Input Konfirmasi Password",
+                    controller: controller.form['confirmPassword']!,
+                    obscureText: true,
+                    validator: controller.confirmPasswordValidator,
+                  ),
+                  SizedBox(height: 40.h),
+                  Expanded(child: Container()),
+                  AppButton(
+                    onPressed: controller.register,
+                    text: "Buat Akun",
+                  ),
+                  SizedBox(height: 20.h),
+                ],
+              ),
             ),
           ),
         ),

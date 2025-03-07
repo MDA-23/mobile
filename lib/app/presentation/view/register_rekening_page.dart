@@ -30,7 +30,7 @@ class RegisterRekeningPage extends GetView<RegisterController> {
                 Row(
                   children: [
                     Text(
-                      "1/5: ",
+                      "1/4: ",
                       style: h5BTextStyle(
                         color: ColorConstants.slate[400],
                       ),
@@ -63,9 +63,12 @@ class RegisterRekeningPage extends GetView<RegisterController> {
                 ),
                 SizedBox(height: 16.h),
                 AppInput(
-                  controller: TextEditingController(),
+                  controller: controller.form['rekening']!,
                   label: "Nomor Rekening Mandiri",
                   placeholder: "Contoh: 1234123412",
+                  onChange: (e) {
+                    controller.form.refresh();
+                  },
                 ),
                 SizedBox(height: 12.h),
                 AppInput(
@@ -75,12 +78,16 @@ class RegisterRekeningPage extends GetView<RegisterController> {
                 ),
                 SizedBox(height: 40.h),
                 Expanded(child: Container()),
-                AppButton(
-                  onPressed: () {
-                    Get.toNamed(AppRoute.registerPhone);
-                  },
-                  text: "Daftarkan Usaha Saya",
-                  width: 1.sw,
+                Obx(
+                  () => AppButton(
+                    onPressed: controller.form['rekening']!.text == ""
+                        ? null
+                        : () {
+                            Get.toNamed(AppRoute.registerPhone);
+                          },
+                    text: "Daftarkan Usaha Saya",
+                    width: 1.sw,
+                  ),
                 ),
                 SizedBox(height: 12.h),
                 Text(

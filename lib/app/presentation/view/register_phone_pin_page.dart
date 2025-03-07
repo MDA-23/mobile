@@ -29,7 +29,7 @@ class RegisterPhonePinPage extends GetView<RegisterController> {
                 Row(
                   children: [
                     Text(
-                      "2/5: ",
+                      "2/4: ",
                       style: h5BTextStyle(
                         color: ColorConstants.slate[400],
                       ),
@@ -68,7 +68,7 @@ class RegisterPhonePinPage extends GetView<RegisterController> {
                 SizedBox(height: 80.h),
                 AppButton(
                   onPressed: () {
-                    Get.toNamed(AppRoute.registerPassword);
+                    Get.toNamed(AppRoute.registerEmail);
                   },
                   text: "Selanjutnya",
                   width: 1.sw,

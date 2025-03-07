@@ -74,7 +74,9 @@ class LandingPage extends GetView<LandingController> {
               SizedBox(height: 12.h),
               AppButton(
                 variant: AppButtonVariant.secondary,
-                onPressed: () {},
+                onPressed: () {
+                  Get.toNamed(AppRoute.login);
+                },
                 text: "Masuk",
                 width: 1.sw,
               ),

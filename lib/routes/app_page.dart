@@ -11,10 +11,13 @@ import 'package:mobile/app/presentation/view/loan_approved_page.dart';
 import 'package:mobile/app/presentation/view/loan_installment_page.dart';
 import 'package:mobile/app/presentation/view/loan_page.dart';
 import 'package:mobile/app/presentation/view/loan_summary_page.dart';
+import 'package:mobile/app/presentation/view/login_page.dart';
+import 'package:mobile/app/presentation/view/register_email_page.dart';
 import 'package:mobile/app/presentation/view/register_password_page.dart';
 import 'package:mobile/app/presentation/view/register_phone_page.dart';
 import 'package:mobile/app/presentation/view/register_phone_pin_page.dart';
 import 'package:mobile/app/presentation/view/register_rekening_page.dart';
+import 'package:mobile/app/presentation/view/register_success_page.dart';
 import 'package:mobile/app/presentation/view/register_tipe_page.dart';
 import 'package:mobile/app/presentation/view/splash_page.dart';
 import 'package:mobile/app/presentation/view/talangan_page.dart';
@@ -98,6 +101,21 @@ List<GetPage<dynamic>> appPage() {
       name: AppRoute.financialTips,
       page: () => FinancialTipsPage(),
       binding: LoanBindings(),
+    ),
+    GetPage(
+      name: AppRoute.registerEmail,
+      page: () => RegisterEmailPage(),
+      binding: AuthBinding(),
+    ),
+    GetPage(
+      name: AppRoute.registerSuccess,
+      page: () => RegisterSuccessPage(),
+      binding: AuthBinding(),
+    ),
+    GetPage(
+      name: AppRoute.login,
+      page: () => LoginPage(),
+      binding: AuthBinding(),
     ),
   ];
 }
