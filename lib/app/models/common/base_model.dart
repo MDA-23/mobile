@@ -5,8 +5,8 @@ part 'base_model.g.dart';
 
 @JsonSerializable()
 class BaseModel implements ModelFactory {
-  final DateTime created_at;
-  final DateTime updated_at;
+  final DateTime? created_at;
+  final DateTime? updated_at;
 
   const BaseModel({
     required this.created_at,

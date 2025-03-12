@@ -32,4 +32,7 @@ class AppRoute {
 
   static String creditScore = "/talangan/credit-score";
   static String financialTips = "/talangan/financial-tips";
+
+  // Loan Application
+  static String cashflow = "/cashflow";
 }

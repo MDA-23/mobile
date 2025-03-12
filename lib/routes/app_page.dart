@@ -1,8 +1,10 @@
 import 'package:get/get.dart';
 import 'package:mobile/app/bindings/auth_bindings.dart';
+import 'package:mobile/app/bindings/cashflow_bindings.dart';
 import 'package:mobile/app/bindings/home_bindings.dart';
 import 'package:mobile/app/bindings/loan_bindings.dart';
 import 'package:mobile/app/bindings/talangan_bindings.dart';
+import 'package:mobile/app/presentation/view/cashflow_page.dart';
 import 'package:mobile/app/presentation/view/credit_score_page.dart';
 import 'package:mobile/app/presentation/view/financial_tips_page.dart';
 import 'package:mobile/app/presentation/view/home_page.dart';
@@ -123,6 +125,11 @@ List<GetPage<dynamic>> appPage() {
       name: AppRoute.login,
       page: () => LoginPage(),
       binding: AuthBinding(),
+    ),
+    GetPage(
+      name: AppRoute.cashflow,
+      page: () => CashflowPage(),
+      binding: CashflowBindings(),
     ),
   ];
 }

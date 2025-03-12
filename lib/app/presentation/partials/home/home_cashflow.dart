@@ -1,11 +1,15 @@
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:intl/intl.dart';
-import 'package:mobile/styles/color_constants.dart';
+import 'package:mobile/app/controller/home_controller.dart';
+import 'package:mobile/app/presentation/widgets/card_cashflow.dart';
+import 'package:mobile/routes/app_route.dart';
 import 'package:mobile/styles/text_styles.dart';
 
 class HomeCashflow extends StatelessWidget {
   String currDate = DateFormat('MMMM yyyy').format(DateTime.now());
+  var controller = HomeController.i;
 
   HomeCashflow({super.key});
 
@@ -27,75 +31,25 @@ class HomeCashflow extends StatelessWidget {
                   currDate,
                   style: body6TextStyle(),
                 ),
+                GestureDetector(
+                  onTap: () {
+                    Get.toNamed(AppRoute.cashflow);
+                  },
+                  child: Icon(
+                    Icons.chevron_right,
+                    size: 20.w,
+                  ),
+                ),
               ],
-            )
+            ),
           ],
         ),
         SizedBox(height: 6.h),
-        Row(
-          children: [
-            Expanded(
-              child: Container(
-                padding: EdgeInsets.all(12.w),
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(12.w),
-                  boxShadow: [ColorConstants.shadow[1]!],
-                ),
-                child: Column(
-                  children: [
-                    Image.asset(
-                      "assets/icons/income.png",
-                      width: 40.w,
-                    ),
-                    SizedBox(height: 8.h),
-                    Text(
-                      "Income",
-                      style: body5BTextStyle(
-                        color: ColorConstants.slate[600],
-                      ),
-                    ),
-                    SizedBox(height: 2.h),
-                    Text(
-                      "Rp1.000.000",
-                      style: body3BTextStyle(),
-                    ),
-                  ],
-                ),
-              ),
-            ),
-            SizedBox(width: 12.w),
-            Expanded(
-              child: Container(
-                padding: EdgeInsets.all(12.w),
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(12.w),
-                  boxShadow: [ColorConstants.shadow[1]!],
-                ),
-                child: Column(
-                  children: [
-                    Image.asset(
-                      "assets/icons/outcome.png",
-                      width: 40.w,
-                    ),
-                    SizedBox(height: 8.h),
-                    Text(
-                      "Outcome",
-                      style: body5BTextStyle(
-                        color: ColorConstants.slate[600],
-                      ),
-                    ),
-                    SizedBox(height: 2.h),
-                    Text(
-                      "Rp900.000",
-                      style: body3BTextStyle(),
-                    ),
-                  ],
-                ),
-              ),
-            ),
-          ],
+        Obx(
+          () => CardCashflow(
+            income: controller.cashflow.value?.income ?? 0,
+            outcome: controller.cashflow.value?.outcome ?? 0,
+          ),
         ),
       ],
     );
