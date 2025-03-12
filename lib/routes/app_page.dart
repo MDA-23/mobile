@@ -3,17 +3,26 @@ import 'package:mobile/app/bindings/auth_bindings.dart';
 import 'package:mobile/app/bindings/cashflow_bindings.dart';
 import 'package:mobile/app/bindings/home_bindings.dart';
 import 'package:mobile/app/bindings/loan_bindings.dart';
+import 'package:mobile/app/bindings/loan_onboard_binding.dart';
+import 'package:mobile/app/bindings/outlet_bindings.dart';
 import 'package:mobile/app/bindings/talangan_bindings.dart';
 import 'package:mobile/app/presentation/view/cashflow_page.dart';
+import 'package:mobile/app/presentation/view/create_outlet_page.dart';
 import 'package:mobile/app/presentation/view/credit_score_page.dart';
+import 'package:mobile/app/presentation/view/detail_outlet_page.dart';
 import 'package:mobile/app/presentation/view/financial_tips_page.dart';
 import 'package:mobile/app/presentation/view/home_page.dart';
 import 'package:mobile/app/presentation/view/landing_page.dart';
 import 'package:mobile/app/presentation/view/loan_approved_page.dart';
+import 'package:mobile/app/presentation/view/loan_document_page.dart';
+import 'package:mobile/app/presentation/view/loan_finish_page.dart';
 import 'package:mobile/app/presentation/view/loan_installment_page.dart';
+import 'package:mobile/app/presentation/view/loan_onboard_page.dart';
 import 'package:mobile/app/presentation/view/loan_page.dart';
+import 'package:mobile/app/presentation/view/loan_sk_page.dart';
 import 'package:mobile/app/presentation/view/loan_summary_page.dart';
 import 'package:mobile/app/presentation/view/login_page.dart';
+import 'package:mobile/app/presentation/view/outlet_page.dart';
 import 'package:mobile/app/presentation/view/register_email_page.dart';
 import 'package:mobile/app/presentation/view/register_password_page.dart';
 import 'package:mobile/app/presentation/view/register_phone_page.dart';
@@ -22,6 +31,7 @@ import 'package:mobile/app/presentation/view/register_profile_page.dart';
 import 'package:mobile/app/presentation/view/register_rekening_page.dart';
 import 'package:mobile/app/presentation/view/register_success_page.dart';
 import 'package:mobile/app/presentation/view/register_tipe_page.dart';
+import 'package:mobile/app/presentation/view/setting_page.dart';
 import 'package:mobile/app/presentation/view/splash_page.dart';
 import 'package:mobile/app/presentation/view/talangan_page.dart';
 import 'package:mobile/routes/app_route.dart';
@@ -130,6 +140,51 @@ List<GetPage<dynamic>> appPage() {
       name: AppRoute.cashflow,
       page: () => CashflowPage(),
       binding: CashflowBindings(),
+    ),
+    GetPage(
+      name: AppRoute.loanOnboard,
+      page: () => LoanOnboardPage(),
+      binding: LoanOnboardBinding(),
+    ),
+    GetPage(
+      name: AppRoute.loanSk,
+      page: () => LoanSkPage(),
+      binding: LoanOnboardBinding(),
+    ),
+    GetPage(
+      name: AppRoute.loanDoccument,
+      page: () => LoanDocumentPage(),
+      binding: LoanOnboardBinding(),
+    ),
+    GetPage(
+      name: AppRoute.loanFinish,
+      page: () => LoanFinishPage(),
+      binding: LoanOnboardBinding(),
+    ),
+    GetPage(
+      name: AppRoute.setting,
+      page: () => SettingPage(),
+      binding: HomeBinding(),
+    ),
+    GetPage(
+      name: AppRoute.outlet,
+      page: () => OutletPage(),
+      binding: OutletBindings(),
+    ),
+    GetPage(
+      name: AppRoute.createOutlet,
+      page: () => CreateOutletPage(edit: false),
+      binding: OutletBindings(),
+    ),
+    GetPage(
+      name: AppRoute.outletDetail(":id"),
+      page: () => DetailOutletPage(),
+      binding: OutletBindings(),
+    ),
+    GetPage(
+      name: AppRoute.editOutlet(":id"),
+      page: () => CreateOutletPage(edit: true),
+      binding: OutletBindings(),
     ),
   ];
 }

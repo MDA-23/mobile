@@ -80,6 +80,9 @@ class AppButton extends StatelessWidget {
           elevation: 0,
           visualDensity: padding != null ? VisualDensity.compact : null,
           tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(10.w),
+          ),
         ),
         child: child ??
             Text(

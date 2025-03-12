@@ -16,7 +16,7 @@ class TalanganPage extends GetView<TalanganController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      bottomNavigationBar: AppBottombar(index: 3),
+      bottomNavigationBar: AppBottomBar(route: AppRoute.talangan),
       body: Stack(
         children: [
           Positioned(

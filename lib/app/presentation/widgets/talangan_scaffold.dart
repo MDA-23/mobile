@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:mobile/app/presentation/widgets/scrollable_constraints.dart';
@@ -9,10 +8,12 @@ import 'package:mobile/styles/text_styles.dart';
 class TalanganScaffold extends StatelessWidget {
   final Widget child;
   final String title;
+  final bool leading;
   const TalanganScaffold({
     super.key,
     required this.title,
     required this.child,
+    this.leading = true,
   });
 
   @override
@@ -43,6 +44,7 @@ class TalanganScaffold extends StatelessWidget {
         ),
         Positioned(
           top: 0,
+          left: leading ? 0.w : -28.w,
           child: SafeArea(
             child: Row(
               children: [
@@ -51,17 +53,20 @@ class TalanganScaffold extends StatelessWidget {
                   onPressed: () {
                     Get.back();
                   },
-                  icon: Icon(
-                    Icons.chevron_left,
-                    size: 26.w,
-                    color: ColorConstants.primary[500],
-                  ),
+                  icon: leading
+                      ? Icon(
+                          Icons.chevron_left,
+                          size: 26.w,
+                          color: ColorConstants.primary[500],
+                        )
+                      : Container(),
                 ),
                 SizedBox(width: 4.w),
                 Text(
                   title,
                   style: h4BTextStyle(
                     color: ColorConstants.primary[500],
+                    size: leading ? 16.sp : 18.sp,
                   ),
                 ),
               ],

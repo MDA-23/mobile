@@ -24,6 +24,11 @@ class AppRoute {
   static String home = "/home";
 
   // Talangan
+  static String loanOnboard = "/onboard-loan";
+  static String loanSk = "/onboard-loan/sk";
+  static String loanDoccument = "/onboard-loan/doccument";
+  static String loanFinish = "/onboard-loan/finish";
+
   static String talangan = "/talangan";
   static String loan = "/talangan/loan";
   static String loanInstallment = "/talangan/loan/installment";
@@ -33,6 +38,15 @@ class AppRoute {
   static String creditScore = "/talangan/credit-score";
   static String financialTips = "/talangan/financial-tips";
 
-  // Loan Application
+  //  Cashflow
   static String cashflow = "/cashflow";
+
+  // Outlet
+  static String setting = "/setting";
+  static String outlet = "/outlet";
+  static String createOutlet = "/outlet/new";
+  static String outletDetail(String id) => "/outlet/$id";
+  static String editOutlet(String id) => "/outlet/$id/edit";
+  static String outletCreated = "/outlet/creted";
+  static String outletDeleted = "/outlet/deleted";
 }

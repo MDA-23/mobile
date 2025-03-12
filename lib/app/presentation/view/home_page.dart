@@ -7,7 +7,7 @@ import 'package:mobile/app/presentation/partials/home/card_income.dart';
 import 'package:mobile/app/presentation/partials/home/home_cashflow.dart';
 import 'package:mobile/app/presentation/partials/home/info_merchant.dart';
 import 'package:mobile/app/presentation/widgets/app_bottombar.dart';
-import 'package:mobile/app/presentation/widgets/app_button.dart';
+import 'package:mobile/routes/app_route.dart';
 import 'package:mobile/styles/color_constants.dart';
 import 'package:mobile/styles/text_styles.dart';
 
@@ -17,8 +17,8 @@ class HomePage extends GetView<HomeController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      bottomNavigationBar: AppBottombar(
-        index: 0,
+      bottomNavigationBar: AppBottomBar(
+        route: AppRoute.home,
       ),
       body: Stack(
         children: [
@@ -36,8 +36,6 @@ class HomePage extends GetView<HomeController> {
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: [
                       SizedBox(height: 16.h),
-                      AppButton(
-                          onPressed: controller.getCashflowData, text: "asd"),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
