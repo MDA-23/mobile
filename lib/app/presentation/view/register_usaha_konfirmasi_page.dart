@@ -11,7 +11,7 @@ class RegistrationPage extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text('1/4: Pendafataran Rekening', style: TextStyle(fontSize: 16)),
+            Text('1/5: Pendafataran Rekening', style: TextStyle(fontSize: 16)),
             SizedBox(height: 10),
             LinearProgressIndicator(value: 0.2), // 20% progress
             SizedBox(height: 20),

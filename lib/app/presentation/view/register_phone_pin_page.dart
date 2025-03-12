@@ -29,7 +29,7 @@ class RegisterPhonePinPage extends GetView<RegisterController> {
                 Row(
                   children: [
                     Text(
-                      "2/4: ",
+                      "2/5: ",
                       style: h5BTextStyle(
                         color: ColorConstants.slate[400],
                       ),

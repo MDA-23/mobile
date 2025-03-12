@@ -30,7 +30,7 @@ class RegisterPasswordPage extends GetView<RegisterController> {
                   Row(
                     children: [
                       Text(
-                        "4/4: ",
+                        "4/5: ",
                         style: h5BTextStyle(
                           color: ColorConstants.slate[400],
                         ),
@@ -72,15 +72,15 @@ class RegisterPasswordPage extends GetView<RegisterController> {
                   AppInput(
                     label: "Konfirmasi Password",
                     placeholder: "Input Konfirmasi Password",
-                    controller: controller.form['confirmPassword']!,
+                    controller: controller.form['password_confirmation']!,
                     obscureText: true,
                     validator: controller.confirmPasswordValidator,
                   ),
                   SizedBox(height: 40.h),
                   Expanded(child: Container()),
                   AppButton(
-                    onPressed: controller.register,
-                    text: "Buat Akun",
+                    onPressed: controller.registerPassword,
+                    text: "Lengkapi Akun",
                   ),
                   SizedBox(height: 20.h),
                 ],

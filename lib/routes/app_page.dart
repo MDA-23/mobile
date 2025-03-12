@@ -16,6 +16,7 @@ import 'package:mobile/app/presentation/view/register_email_page.dart';
 import 'package:mobile/app/presentation/view/register_password_page.dart';
 import 'package:mobile/app/presentation/view/register_phone_page.dart';
 import 'package:mobile/app/presentation/view/register_phone_pin_page.dart';
+import 'package:mobile/app/presentation/view/register_profile_page.dart';
 import 'package:mobile/app/presentation/view/register_rekening_page.dart';
 import 'package:mobile/app/presentation/view/register_success_page.dart';
 import 'package:mobile/app/presentation/view/register_tipe_page.dart';
@@ -64,6 +65,12 @@ List<GetPage<dynamic>> appPage() {
     GetPage(
       name: AppRoute.registerPassword,
       page: () => RegisterPasswordPage(),
+      binding: AuthBinding(),
+      transition: Transition.rightToLeftWithFade,
+    ),
+    GetPage(
+      name: AppRoute.registerProfile,
+      page: () => RegisterProfilePage(),
       binding: AuthBinding(),
       transition: Transition.rightToLeftWithFade,
     ),

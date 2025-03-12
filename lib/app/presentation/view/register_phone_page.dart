@@ -6,7 +6,6 @@ import 'package:mobile/app/presentation/widgets/app_button.dart';
 import 'package:mobile/app/presentation/widgets/app_input.dart';
 import 'package:mobile/app/presentation/widgets/register_progress.dart';
 import 'package:mobile/app/presentation/widgets/scrollable_constraints.dart';
-import 'package:mobile/routes/app_route.dart';
 import 'package:mobile/styles/color_constants.dart';
 import 'package:mobile/styles/text_styles.dart';
 
@@ -29,7 +28,7 @@ class RegisterPhonePage extends GetView<RegisterController> {
                 Row(
                   children: [
                     Text(
-                      "2/4: ",
+                      "2/5: ",
                       style: h5BTextStyle(
                         color: ColorConstants.slate[400],
                       ),
@@ -76,9 +75,7 @@ class RegisterPhonePage extends GetView<RegisterController> {
                   () => AppButton(
                     onPressed: controller.form['phone']!.text == ""
                         ? null
-                        : () {
-                            Get.toNamed(AppRoute.registerPhonePin);
-                          },
+                        : controller.checkPhone,
                     text: "Selanjutnya",
                   ),
                 ),

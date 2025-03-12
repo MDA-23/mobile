@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mobile/app/presentation/widgets/app_loading.dart';
-import 'package:mobile/firebase_options.dart';
+import 'package:mobile/app/repository/auth_repo.dart';
 import 'package:mobile/routes/app_route.dart';
+import 'package:mobile/utils/app_token.dart';
 import 'package:mobile/utils/show_alert.dart';
 
 class LoginController extends GetxController {
@@ -10,7 +11,7 @@ class LoginController extends GetxController {
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
   RxMap<String, TextEditingController> form = {
-    "email": TextEditingController(),
+    "phone": TextEditingController(),
     "password": TextEditingController(),
   }.obs;
 
@@ -30,19 +31,18 @@ class LoginController extends GetxController {
     if (formKey.currentState!.validate()) {
       try {
         showLoadingDialog(Get.context!, isLoading);
-        final email = form['email']!.text.trim();
-        final password = form['password']!.text.trim();
-
-        await auth.signInWithEmailAndPassword(
-          email: email,
-          password: password,
-        );
-
+        final inputForm = {
+          "phone": form['phone']!.text.trim(),
+          "password": form['password']!.text.trim(),
+        };
+        var token = await AuthRepo.login(inputForm);
+        UserToken.setToken(token);
+        showAlert("Login succeed", isSuccess: true);
         await closeLoading(isLoading);
+
         Get.offAllNamed(AppRoute.home);
       } catch (error) {
         await closeLoading(isLoading);
-        showAlert(error.toString());
       }
     }
   }

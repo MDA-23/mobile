@@ -30,7 +30,7 @@ class RegisterRekeningPage extends GetView<RegisterController> {
                 Row(
                   children: [
                     Text(
-                      "1/4: ",
+                      "1/5: ",
                       style: h5BTextStyle(
                         color: ColorConstants.slate[400],
                       ),

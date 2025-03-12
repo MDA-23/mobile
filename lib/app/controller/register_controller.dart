@@ -1,22 +1,29 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mobile/app/presentation/widgets/app_loading.dart';
-import 'package:mobile/firebase_options.dart';
+import 'package:mobile/app/repository/auth_repo.dart';
 import 'package:mobile/routes/app_route.dart';
-import 'package:mobile/utils/show_alert.dart';
 
 class RegisterController extends GetxController {
   static RegisterController get i => Get.find<RegisterController>();
   final GlobalKey<FormState> formEmailKey = GlobalKey<FormState>();
   final GlobalKey<FormState> formPasswordKey = GlobalKey<FormState>();
+  final GlobalKey<FormState> formProfileKey = GlobalKey<FormState>();
 
   RxString tipeUsaha = "".obs;
   RxMap<String, TextEditingController> form = {
     "phone": TextEditingController(),
     "email": TextEditingController(),
     "password": TextEditingController(),
-    "confirmPassword": TextEditingController(),
+    "password_confirmation": TextEditingController(),
     "rekening": TextEditingController(),
+    "fullName": TextEditingController(),
+    "firstName": TextEditingController(),
+    "lastName": TextEditingController(),
+    "merchantName": TextEditingController(),
+    "merchantAddress": TextEditingController(),
+    "merchantPhone": TextEditingController(),
+    "merchantEmail": TextEditingController(),
   }.obs;
 
   String? emailValidator(e) {
@@ -62,20 +69,67 @@ class RegisterController extends GetxController {
 
   RxBool isLoading = false.obs;
 
-  void register() async {
+  void checkPhone() async {
+    try {
+      showLoadingDialog(Get.context!, isLoading);
+      final isValidPhone =
+          await AuthRepo.checkPhone({"phone": form['phone']!.text});
+      await closeLoading(isLoading);
+
+      if (isValidPhone) {
+        Get.toNamed(AppRoute.registerEmail);
+      }
+    } catch (err) {
+      await closeLoading(isLoading);
+    }
+  }
+
+  void registerEmail() async {
+    if (!formEmailKey.currentState!.validate()) {
+      return;
+    }
+    try {
+      showLoadingDialog(Get.context!, isLoading);
+      final isValid = await AuthRepo.checkEmail({"email": form['email']!.text});
+      await closeLoading(isLoading);
+
+      if (isValid) {
+        Get.toNamed(AppRoute.registerPassword);
+      }
+    } catch (_) {}
+  }
+
+  void registerPassword() async {
     if (formPasswordKey.currentState!.validate()) {
+      Get.toNamed(AppRoute.registerProfile);
+    }
+  }
+
+  void register() async {
+    if (formProfileKey.currentState!.validate()) {
+      final inputForm = {
+        "email": form['email']!.text,
+        "phone": form['phone']!.text,
+        "password": form['password']!.text,
+        "password_confirmation": form['password_confirmation']!.text,
+        "rekening": form['rekening']!.text,
+        "fullName": form['fullName']!.text,
+        "firstName": form['firstName']!.text,
+        "lastName": form['lastName']!.text,
+        "merchantName": form['merchantName']!.text,
+        "merchantAddress": form['merchantAddress']!.text,
+        "merchantPhone": form['merchantPhone']!.text,
+        "merchantEmail": form['merchantEmail']!.text,
+      };
+
       try {
         showLoadingDialog(Get.context!, isLoading);
-        await auth.createUserWithEmailAndPassword(
-          email: form['email']!.text.trim(),
-          password: form['password']!.text,
-        );
-        await closeLoading(isLoading);
+        await AuthRepo.register(inputForm);
 
-        Get.toNamed(AppRoute.registerSuccess);
+        await closeLoading(isLoading);
+        Get.offAllNamed(AppRoute.registerSuccess);
       } catch (err) {
         await closeLoading(isLoading);
-        showAlert(err.toString());
       }
     }
   }

@@ -6,7 +6,6 @@ import 'package:mobile/app/presentation/widgets/app_button.dart';
 import 'package:mobile/app/presentation/widgets/app_input.dart';
 import 'package:mobile/app/presentation/widgets/register_progress.dart';
 import 'package:mobile/app/presentation/widgets/scrollable_constraints.dart';
-import 'package:mobile/routes/app_route.dart';
 import 'package:mobile/styles/color_constants.dart';
 import 'package:mobile/styles/text_styles.dart';
 
@@ -30,7 +29,7 @@ class RegisterEmailPage extends GetView<RegisterController> {
                   Row(
                     children: [
                       Text(
-                        "3/4: ",
+                        "3/5: ",
                         style: h5BTextStyle(
                           color: ColorConstants.slate[400],
                         ),
@@ -72,11 +71,7 @@ class RegisterEmailPage extends GetView<RegisterController> {
                   Expanded(child: Container()),
                   SizedBox(height: 40.h),
                   AppButton(
-                    onPressed: () {
-                      if (controller.formEmailKey.currentState!.validate()) {
-                        Get.toNamed(AppRoute.registerPassword);
-                      }
-                    },
+                    onPressed: controller.registerEmail,
                     text: "Selanjutnya",
                     width: 1.sw,
                   ),

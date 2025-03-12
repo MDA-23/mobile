@@ -44,11 +44,12 @@ class LoginPage extends GetView<LoginController> {
                   ),
                   SizedBox(height: 20.h),
                   AppInput(
-                    controller: controller.form['email']!,
+                    controller: controller.form['phone']!,
                     textInputAction: TextInputAction.next,
-                    label: "Email",
-                    placeholder: "Input Email",
-                    validator: controller.emailValidator,
+                    label: "Nomor Telepon",
+                    placeholder: "Input Nomor Telepon",
+                    keyboardType: TextInputType.number,
+                    validator: (e) => inputValidator(e, "Nomor Telepon"),
                   ),
                   SizedBox(height: 16.h),
                   AppInput(

@@ -12,7 +12,7 @@ class RegisterProgress extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: List.generate(4, (index) {
+      children: List.generate(5, (index) {
         return Expanded(
           child: Container(
             margin: EdgeInsets.symmetric(horizontal: 2.w),
