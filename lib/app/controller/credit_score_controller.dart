@@ -6,6 +6,8 @@ import 'package:mobile/app/repository/loan_profile_repo.dart';
 import 'package:mobile/app/repository/loan_repo.dart';
 
 class CreditScoreController extends GetxController {
+  static CreditScoreController get i => Get.find<CreditScoreController>();
+
   Rxn<LoanProfileModel> loanProfile = Rxn<LoanProfileModel>();
   Rxn<CreditScoreModel> creditScore = Rxn<CreditScoreModel>();
   RxList<LoanModel> loans = RxList<LoanModel>([]);

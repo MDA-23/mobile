@@ -57,7 +57,6 @@ class CreateOutletPage extends GetView<CreateOutletController> {
                 ),
                 SizedBox(height: 16.h),
                 AppDropdown(
-                  // controller: controller.form['type']!,
                   value: controller.type.value,
                   label: "Tipe",
                   placeholder: "Input Type Outlet",

@@ -9,6 +9,7 @@ import 'package:mobile/app/repository/loan_repo.dart';
 import 'package:mobile/routes/app_route.dart';
 
 class LoanController extends GetxController {
+  static LoanController get i => Get.find<LoanController>();
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
   Rxn<LoanProfileModel> loanProfile = Rxn<LoanProfileModel>();

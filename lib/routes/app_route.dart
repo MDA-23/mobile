@@ -37,6 +37,13 @@ class AppRoute {
   static String loanApproved = "/talangan/loan/approved";
 
   static String creditScore = "/talangan/credit-score";
+
+  static String loanDetail(String id) => "/talangan/credit-score/loan/$id";
+  static String loanRepayment(String id) =>
+      "/talangan/credit-score/loan/$id/repayment";
+  static String repaymentSuccess(String id) =>
+      "/talangan/credit-score/loan/$id/repayment-success";
+
   static String financialTips = "/talangan/financial-tips";
 
   //  Cashflow

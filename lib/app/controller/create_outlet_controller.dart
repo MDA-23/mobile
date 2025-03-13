@@ -24,6 +24,7 @@ class CreateOutletController extends GetxController {
       form['address']!.text = res.address;
       form['id_revenue']!.text = res.id_revenue.toString();
       id_revenue.value = res.id_revenue.toString();
+      type.value = res.type;
     } catch (_) {}
   }
 

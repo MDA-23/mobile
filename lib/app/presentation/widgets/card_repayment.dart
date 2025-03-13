@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:mobile/app/models/transaction/transaction_model.dart';
+import 'package:mobile/app/models/repayment/repayment_model.dart';
 import 'package:mobile/styles/color_constants.dart';
 import 'package:mobile/styles/text_styles.dart';
 import 'package:mobile/utils/format_currency.dart';
 import 'package:mobile/utils/format_date.dart';
 
-class CardTransaction extends StatelessWidget {
-  final TransactionModel data;
-  CardTransaction({
+class CardRepayment extends StatelessWidget {
+  final RepaymentModel data;
+  const CardRepayment({
     super.key,
     required this.data,
   });
@@ -19,7 +20,7 @@ class CardTransaction extends StatelessWidget {
       padding: EdgeInsets.symmetric(vertical: 10.h),
       decoration: BoxDecoration(
         border: Border(
-          bottom: BorderSide(color: ColorConstants.slate[300]!),
+          bottom: BorderSide(color: ColorConstants.slate[200]!),
         ),
       ),
       child: Row(
@@ -27,26 +28,22 @@ class CardTransaction extends StatelessWidget {
         children: [
           Flexible(
             child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
                 Text(
-                  data.name,
-                  style: body5BTextStyle(),
+                  "Cicilan Ke-${data.order}",
+                  style: body5TextStyle(weight: FontWeight.w600),
                 ),
-                SizedBox(height: 4.h),
                 Text(
-                  "${formatDate(data.date, format: "dd MMMM yyyy mm:ss")} WIB",
+                  formatDate(data.date),
                   style: body5TextStyle(),
                 ),
               ],
             ),
           ),
           Text(
-            "${data.type == "credit" ? "+" : "-"} ${formatCurrency(data.amount)}",
-            style: body4BTextStyle(
-              weight: FontWeight.w800,
-              color: data.type == "credit" ? Colors.green : Colors.red,
-            ),
+            formatCurrency(data.amount),
+            style: body4BTextStyle(),
           ),
         ],
       ),

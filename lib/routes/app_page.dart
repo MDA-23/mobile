@@ -17,11 +17,13 @@ import 'package:mobile/app/presentation/view/home_page.dart';
 import 'package:mobile/app/presentation/view/landing_page.dart';
 import 'package:mobile/app/presentation/view/loan_approved_page.dart';
 import 'package:mobile/app/presentation/view/loan_banding_page.dart';
+import 'package:mobile/app/presentation/view/loan_detail_page.dart';
 import 'package:mobile/app/presentation/view/loan_document_page.dart';
 import 'package:mobile/app/presentation/view/loan_finish_page.dart';
 import 'package:mobile/app/presentation/view/loan_installment_page.dart';
 import 'package:mobile/app/presentation/view/loan_onboard_page.dart';
 import 'package:mobile/app/presentation/view/loan_page.dart';
+import 'package:mobile/app/presentation/view/loan_repayment_page.dart';
 import 'package:mobile/app/presentation/view/loan_sk_page.dart';
 import 'package:mobile/app/presentation/view/loan_summary_page.dart';
 import 'package:mobile/app/presentation/view/login_page.dart';
@@ -34,6 +36,7 @@ import 'package:mobile/app/presentation/view/register_profile_page.dart';
 import 'package:mobile/app/presentation/view/register_rekening_page.dart';
 import 'package:mobile/app/presentation/view/register_success_page.dart';
 import 'package:mobile/app/presentation/view/register_tipe_page.dart';
+import 'package:mobile/app/presentation/view/repayment_success_page.dart';
 import 'package:mobile/app/presentation/view/setting_page.dart';
 import 'package:mobile/app/presentation/view/splash_page.dart';
 import 'package:mobile/app/presentation/view/talangan_page.dart';
@@ -195,6 +198,21 @@ List<GetPage<dynamic>> appPage() {
       name: AppRoute.editOutlet(":id"),
       page: () => CreateOutletPage(edit: true),
       binding: OutletBindings(),
+    ),
+    GetPage(
+      name: AppRoute.loanDetail(":id"),
+      page: () => LoanDetailPage(),
+      binding: CreditScoreBindings(),
+    ),
+    GetPage(
+      name: AppRoute.loanRepayment(":id"),
+      page: () => LoanRepaymentPage(),
+      binding: CreditScoreBindings(),
+    ),
+    GetPage(
+      name: AppRoute.repaymentSuccess(":id"),
+      page: () => RepaymentSuccessPage(),
+      binding: CreditScoreBindings(),
     ),
   ];
 }
