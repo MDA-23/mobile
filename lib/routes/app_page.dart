@@ -2,6 +2,7 @@ import 'package:flutter_portal/flutter_portal.dart';
 import 'package:get/get.dart';
 import 'package:mobile/app/bindings/auth_bindings.dart';
 import 'package:mobile/app/bindings/cashflow_bindings.dart';
+import 'package:mobile/app/bindings/credit_score_bindings.dart';
 import 'package:mobile/app/bindings/home_bindings.dart';
 import 'package:mobile/app/bindings/loan_bindings.dart';
 import 'package:mobile/app/bindings/loan_onboard_binding.dart';
@@ -116,7 +117,7 @@ List<GetPage<dynamic>> appPage() {
     GetPage(
       name: AppRoute.creditScore,
       page: () => CreditScorePage(),
-      binding: LoanBindings(),
+      binding: CreditScoreBindings(),
     ),
     GetPage(
       name: AppRoute.financialTips,

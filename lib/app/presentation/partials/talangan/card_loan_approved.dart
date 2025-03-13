@@ -30,7 +30,7 @@ class CardLoanApproved extends StatelessWidget {
               ),
               SizedBox(height: 10.h),
               Text(
-                formatCurrency(data?.maxAmount ?? 0),
+                formatCurrency((data?.maxAmount ?? 0) - (data?.limit ?? 0)),
                 style: body2BTextStyle(),
               ),
               SizedBox(height: 16.h),

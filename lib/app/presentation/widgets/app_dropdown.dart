@@ -173,7 +173,7 @@ class _AppDropdownState<T> extends State<AppDropdown<T>> {
                 ),
               ),
               menuItemStyleData: MenuItemStyleData(
-                height: 48.h,
+                height: 40.h,
                 overlayColor: MaterialStateColor.resolveWith(
                   (states) => ColorConstants.primary[600]!.withOpacity(.2),
                 ),
@@ -188,7 +188,7 @@ class _AppDropdownState<T> extends State<AppDropdown<T>> {
                           child: e.child ??
                               Text(
                                 e.text,
-                                style: body3TextStyle(
+                                style: body4TextStyle(
                                   color: ColorConstants.slate[800],
                                 ),
                                 overflow: TextOverflow.ellipsis,
@@ -261,7 +261,7 @@ class _AppDropdownState<T> extends State<AppDropdown<T>> {
                           .firstWhere((element) => element.value == value)
                           .text
                       : widget.placeholder ?? "",
-              style: body3TextStyle(
+              style: body4TextStyle(
                 color: (state.errorText?.isNotEmpty ?? false)
                     ? ColorConstants.error
                     : widget.value == null

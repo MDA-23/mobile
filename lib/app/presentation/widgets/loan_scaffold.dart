@@ -39,23 +39,6 @@ class LoanScaffold extends StatelessWidget {
               ),
             ],
           ),
-          // SingleChildScrollView(
-          //   child: Column(
-          //     children: [
-          //       SizedBox(height: 120.h),
-          //       Container(
-          //         width: 1.sw,
-          //         decoration: BoxDecoration(
-          //           color: Colors.white,
-          //           borderRadius: BorderRadius.vertical(
-          //             top: Radius.circular(20.w),
-          //           ),
-          //         ),
-          //         child: child,
-          //       ),
-          //     ],
-          //   ),
-          // ),
           Positioned(
             child: SafeArea(
               child: Row(

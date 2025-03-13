@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mobile/app/models/credit_score/credit_score_model.dart';
 import 'package:mobile/styles/text_styles.dart';
 import 'package:syncfusion_flutter_gauges/gauges.dart';
@@ -13,6 +14,7 @@ class CreditScoreChart extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
+      height: 290.h,
       child: SfRadialGauge(
         axes: [
           RadialAxis(
@@ -52,7 +54,7 @@ class CreditScoreChart extends StatelessWidget {
               GaugeRange(
                 startValue: 0,
                 endValue: 250,
-                color: Colors.red,
+                color: Color(0xffFF0000),
                 label: 'Bad',
                 endWidth: 40,
                 startWidth: 40,
@@ -60,7 +62,7 @@ class CreditScoreChart extends StatelessWidget {
               GaugeRange(
                 startValue: 250,
                 endValue: 500,
-                color: Colors.yellow,
+                color: Color(0xffFFCD29),
                 label: 'Normal',
                 endWidth: 40,
                 startWidth: 40,
@@ -68,7 +70,7 @@ class CreditScoreChart extends StatelessWidget {
               GaugeRange(
                 startValue: 500,
                 endValue: 750,
-                color: Colors.green,
+                color: Color(0xff09AE9A),
                 label: 'Good',
                 endWidth: 40,
                 startWidth: 40,
@@ -76,7 +78,7 @@ class CreditScoreChart extends StatelessWidget {
               GaugeRange(
                 startValue: 750,
                 endValue: 1000,
-                color: Colors.blue,
+                color: Color(0xff033DED),
                 label: 'Excellent',
                 endWidth: 40,
                 startWidth: 40,

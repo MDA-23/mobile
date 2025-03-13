@@ -1,156 +1,65 @@
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:mobile/app/controller/talangan_controller.dart';
+import 'package:mobile/app/controller/loan_controller.dart';
+import 'package:mobile/app/presentation/partials/talangan/card_loan_approved.dart';
 import 'package:mobile/app/presentation/widgets/app_button.dart';
+import 'package:mobile/app/presentation/widgets/app_dropdown.dart';
+import 'package:mobile/app/presentation/widgets/app_input.dart';
+import 'package:mobile/app/presentation/widgets/credit_chart.dart';
 import 'package:mobile/app/presentation/widgets/loan_scaffold.dart';
-import 'package:mobile/routes/app_route.dart';
 import 'package:mobile/styles/color_constants.dart';
 import 'package:mobile/styles/text_styles.dart';
+import 'package:mobile/utils/input_validator.dart';
 
-class LoanPage extends GetView<TalanganController> {
+class LoanPage extends GetView<LoanController> {
   const LoanPage({super.key});
 
   @override
   Widget build(BuildContext context) {
     return LoanScaffold(
       title: "Loan",
-      child: Container(
-        padding: EdgeInsets.all(20.w),
+      child: Form(
+        key: controller.formKey,
         child: Column(
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            Container(
-              padding: EdgeInsets.all(16.w),
-              decoration: BoxDecoration(
-                border: Border.all(color: ColorConstants.primary[400]!),
-                borderRadius: BorderRadius.circular(20.w),
-              ),
-              child: Column(
-                children: [
-                  Text(
-                    "You approved loan amount Up to",
-                    style: body5TextStyle(),
-                  ),
-                  SizedBox(height: 10.h),
-                  Text(
-                    "Rp5.000.000",
-                    style: body2BTextStyle(),
-                  ),
-                  SizedBox(height: 16.h),
-                  Container(
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10.w),
-                    ),
-                    clipBehavior: Clip.antiAlias,
-                    child: LinearProgressIndicator(
-                      value: 0.5,
-                      minHeight: 20,
-                      backgroundColor: Colors.grey[300],
-                      color: ColorConstants.primary[500],
-                    ),
-                  ),
-                  SizedBox(height: 8),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        '1,000,000',
-                        style: body5BTextStyle(),
-                      ),
-                      Text(
-                        '10,000,000',
-                        style: body5BTextStyle(),
-                      ),
-                    ],
-                  ),
-                ],
-              ),
+            Obx(
+              () => CardLoanApproved(data: controller.loanProfile.value),
             ),
-            SizedBox(height: 15.h),
-            Row(
-              children: [
-                Expanded(
-                  child: Container(
-                    padding: EdgeInsets.all(12.w),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(5.w),
-                      color: Color(0xffDFE6FF),
-                    ),
-                    child: Row(
-                      children: [
-                        Container(
-                          padding: EdgeInsets.all(8.w),
-                          decoration: BoxDecoration(
-                            shape: BoxShape.circle,
-                            color: Color(0xff5B93FF).withOpacity(.5),
-                          ),
-                          child: Icon(
-                            Icons.currency_exchange,
-                            color: ColorConstants.primary[500],
-                          ),
-                        ),
-                        SizedBox(width: 8.w),
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              "Processing Fee",
-                              style: body6TextStyle(),
-                            ),
-                            SizedBox(height: 4.h),
-                            Text(
-                              "500 - 800",
-                              style: body5BTextStyle(weight: FontWeight.w900),
-                            )
-                          ],
-                        )
-                      ],
-                    ),
-                  ),
-                ),
-                SizedBox(width: 15.w),
-                Expanded(
-                  child: Container(
-                    padding: EdgeInsets.all(12.w),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(5.w),
-                      color: Color(0xffDFE6FF),
-                    ),
-                    child: Row(
-                      children: [
-                        Container(
-                          padding: EdgeInsets.all(8.w),
-                          decoration: BoxDecoration(
-                            shape: BoxShape.circle,
-                            color: Color(0xff5B93FF).withOpacity(.5),
-                          ),
-                          child: Icon(
-                            Icons.timelapse,
-                            color: ColorConstants.primary[500],
-                          ),
-                        ),
-                        SizedBox(width: 8.w),
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              "Tenure",
-                              style: body6TextStyle(),
-                            ),
-                            SizedBox(height: 4.h),
-                            Text(
-                              "Up to 30 days",
-                              style: body5BTextStyle(weight: FontWeight.w900),
-                            )
-                          ],
-                        )
-                      ],
-                    ),
-                  ),
-                ),
-              ],
+            SizedBox(height: 16.h),
+            AppInput(
+              prefix: Text(
+                "Rp | ",
+                style: body4TextStyle(color: ColorConstants.slate[500]),
+              ),
+              controller: controller.form['amount']!,
+              keyboardType: TextInputType.number,
+              onChange: (e) {
+                controller.amount.value = int.tryParse(e);
+              },
+              label: "Amount",
+              placeholder: "Input Loan Amount",
+              validator: controller.amountValidator,
+            ),
+            SizedBox(height: 12.h),
+            Obx(
+              () => AppDropdown<int>(
+                placeholder: "Input Tenor",
+                label: "Tenor",
+                items: [
+                  AppDropdownItem(text: "3 Bulan", value: 3),
+                  AppDropdownItem(text: "6 Bulan", value: 6),
+                  AppDropdownItem(text: "12 Bulan", value: 12),
+                ],
+                value: controller.tenor.value,
+                onChanged: (e) {
+                  controller.tenor.value = e;
+                },
+                validator: (e) =>
+                    inputValidator(controller.tenor.value.toString(), "Tenor"),
+              ),
             ),
             SizedBox(height: 20.h),
             Text(
@@ -193,14 +102,14 @@ class LoanPage extends GetView<TalanganController> {
                     ),
                   ],
                 )),
+            Expanded(child: Container()),
             SizedBox(
-              height: .25.sh,
+              height: 20.h,
             ),
             AppButton(
-                onPressed: () {
-                  Get.toNamed(AppRoute.loanInstallment);
-                },
-                text: "Next"),
+              onPressed: controller.inputAmount,
+              text: "Next",
+            ),
             SizedBox(height: 10.h),
           ],
         ),

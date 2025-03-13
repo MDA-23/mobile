@@ -301,7 +301,7 @@ class _AppInputState extends State<AppInput> {
         Size.square(40.w),
       ),
       hintStyle: widget.hintStyle ??
-          body3TextStyle(
+          body4TextStyle(
             weight:
                 state.errorText != null ? FontWeight.w500 : FontWeight.normal,
             color: state.errorText != null

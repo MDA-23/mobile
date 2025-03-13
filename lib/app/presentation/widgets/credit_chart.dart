@@ -9,7 +9,7 @@ class CreditChart extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: .8.sw,
+      height: 280.h,
       child: SfRadialGauge(
         axes: [
           RadialAxis(

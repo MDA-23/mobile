@@ -62,7 +62,6 @@ class CreateOutletPage extends GetView<CreateOutletController> {
                   label: "Tipe",
                   placeholder: "Input Type Outlet",
                   validator: (e) => inputValidator(e, "Tipe Outlet"),
-
                   onChanged: (e) {
                     if (e != null) {
                       controller.type.value = e;
