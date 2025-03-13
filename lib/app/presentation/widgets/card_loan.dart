@@ -25,7 +25,7 @@ class CardLoan extends StatelessWidget {
               Container(
                 padding: EdgeInsets.all(8.w),
                 decoration: BoxDecoration(
-                  color: ColorConstants.primary[50],
+                  color: ColorConstants.primary[500],
                   borderRadius: BorderRadius.circular(8.w),
                 ),
                 margin: EdgeInsets.only(right: 16.w),

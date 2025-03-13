@@ -56,12 +56,24 @@ class CreateOutletPage extends GetView<CreateOutletController> {
                   validator: (e) => inputValidator(e, "Pendapatan"),
                 ),
                 SizedBox(height: 16.h),
-                AppInput(
-                  controller: controller.form['type']!,
+                AppDropdown(
+                  // controller: controller.form['type']!,
+                  value: controller.type.value,
                   label: "Tipe",
                   placeholder: "Input Type Outlet",
-                  validator: (e) => inputValidator(e, "Tipe outlet"),
-                  textInputAction: TextInputAction.next,
+                  validator: (e) => inputValidator(e, "Tipe Outlet"),
+
+                  onChanged: (e) {
+                    if (e != null) {
+                      controller.type.value = e;
+                      controller.form['type']!.text = e;
+                    }
+                  },
+                  items: [
+                    AppDropdownItem(
+                        text: "Perseorangan", value: "Perseorangan"),
+                    AppDropdownItem(text: "Badan Usaha", value: "Badan Usaha"),
+                  ],
                 ),
                 SizedBox(height: 16.h),
                 AppInput(

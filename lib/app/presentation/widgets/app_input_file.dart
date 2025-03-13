@@ -32,7 +32,7 @@ class AppInputFile extends StatelessWidget {
       children: [
         Text(
           label,
-          style: h5BTextStyle(),
+          style: body5TextStyle(color: ColorConstants.slate[900]),
         ),
         SizedBox(height: 8.h),
         DottedBorder(

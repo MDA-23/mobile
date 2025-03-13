@@ -1,6 +1,7 @@
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:mobile/app/presentation/widgets/scrollable_constraints.dart';
 import 'package:mobile/styles/color_constants.dart';
 import 'package:mobile/styles/text_styles.dart';
 
@@ -19,23 +20,42 @@ class LoanScaffold extends StatelessWidget {
       backgroundColor: ColorConstants.primary[500],
       body: Stack(
         children: [
-          SingleChildScrollView(
-            child: Column(
-              children: [
-                SizedBox(height: 120.h),
-                Container(
-                  width: 1.sw,
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.vertical(
-                      top: Radius.circular(20.w),
+          Column(
+            children: [
+              SizedBox(height: 100.h),
+              Expanded(
+                child: ScrollableConstraints(
+                  child: Container(
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.vertical(
+                        top: Radius.circular(35.w),
+                      ),
                     ),
+                    padding: EdgeInsets.all(20.w),
+                    child: child,
                   ),
-                  child: child,
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
+          // SingleChildScrollView(
+          //   child: Column(
+          //     children: [
+          //       SizedBox(height: 120.h),
+          //       Container(
+          //         width: 1.sw,
+          //         decoration: BoxDecoration(
+          //           color: Colors.white,
+          //           borderRadius: BorderRadius.vertical(
+          //             top: Radius.circular(20.w),
+          //           ),
+          //         ),
+          //         child: child,
+          //       ),
+          //     ],
+          //   ),
+          // ),
           Positioned(
             child: SafeArea(
               child: Row(

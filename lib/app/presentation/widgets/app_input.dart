@@ -264,7 +264,7 @@ class _AppInputState extends State<AppInput> {
           ? (isFocused
               ? [
                   BoxShadow(
-                    color: ColorConstants.primary[50]!.withOpacity(.4),
+                    color: ColorConstants.primary[500]!.withOpacity(.4),
                     offset: Offset(0, 0),
                     blurRadius: 4,
                   ),
@@ -279,7 +279,7 @@ class _AppInputState extends State<AppInput> {
           : (isFocused
               ? [
                   BoxShadow(
-                    color: ColorConstants.primary[50]!.withOpacity(.4),
+                    color: ColorConstants.primary[500]!.withOpacity(.4),
                     offset: Offset(0, 0),
                     blurRadius: 4,
                   ),

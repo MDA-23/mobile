@@ -47,13 +47,18 @@ class AppBottomBar extends StatelessWidget {
                   if (i == 1 || i == 2) {
                     return;
                   }
+                  if (i == 0 || i == 4) {
+                    Get.toNamed(e[0]);
+                    return;
+                  }
+
                   if (i == 3 &&
                       GlobalController.i.merchant.value?.ktp != null) {
                     Get.toNamed(e[0]);
                     return;
                   }
 
-                  Get.toNamed(e[0]);
+                  Get.toNamed(AppRoute.loanOnboard);
                 },
                 child: Column(
                   children: [

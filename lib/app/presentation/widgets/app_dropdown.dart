@@ -145,7 +145,7 @@ class _AppDropdownState<T> extends State<AppDropdown<T>> {
                           Icon(
                             Icons.keyboard_arrow_down,
                             color: isFocused
-                                ? ColorConstants.primary[50]
+                                ? ColorConstants.primary[500]
                                 : ColorConstants.slate[500],
                           ),
                         ],

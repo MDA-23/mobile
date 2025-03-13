@@ -28,6 +28,7 @@ class AppRoute {
   static String loanSk = "/onboard-loan/sk";
   static String loanDoccument = "/onboard-loan/doccument";
   static String loanFinish = "/onboard-loan/finish";
+  static String loanBanding = "/onboard-loan/banding";
 
   static String talangan = "/talangan";
   static String loan = "/talangan/loan";

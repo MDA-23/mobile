@@ -64,6 +64,8 @@ class CreateOutletController extends GetxController {
     }
   }
 
+  RxnString type = RxnString();
+
   void updateData() async {
     if (formKey.currentState!.validate()) {
       try {

@@ -33,7 +33,7 @@ class RegisterTipePage extends GetView<RegisterController> {
                       child: Container(
                         decoration: BoxDecoration(
                           color: controller.tipeUsaha.value == 'Perseorangan'
-                              ? ColorConstants.primary[50]
+                              ? ColorConstants.primary[500]
                               : Colors.white,
                           borderRadius: BorderRadius.circular(8),
                           boxShadow: [
@@ -73,7 +73,7 @@ class RegisterTipePage extends GetView<RegisterController> {
                       child: Container(
                         decoration: BoxDecoration(
                           color: controller.tipeUsaha.value == 'Badan Usaha'
-                              ? ColorConstants.primary[50]
+                              ? ColorConstants.primary[500]
                               : Colors.white,
                           borderRadius: BorderRadius.circular(8),
                           boxShadow: [

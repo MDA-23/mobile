@@ -1,3 +1,4 @@
+import 'package:flutter_portal/flutter_portal.dart';
 import 'package:get/get.dart';
 import 'package:mobile/app/bindings/auth_bindings.dart';
 import 'package:mobile/app/bindings/cashflow_bindings.dart';
@@ -14,6 +15,7 @@ import 'package:mobile/app/presentation/view/financial_tips_page.dart';
 import 'package:mobile/app/presentation/view/home_page.dart';
 import 'package:mobile/app/presentation/view/landing_page.dart';
 import 'package:mobile/app/presentation/view/loan_approved_page.dart';
+import 'package:mobile/app/presentation/view/loan_banding_page.dart';
 import 'package:mobile/app/presentation/view/loan_document_page.dart';
 import 'package:mobile/app/presentation/view/loan_finish_page.dart';
 import 'package:mobile/app/presentation/view/loan_installment_page.dart';
@@ -153,12 +155,19 @@ List<GetPage<dynamic>> appPage() {
     ),
     GetPage(
       name: AppRoute.loanDoccument,
-      page: () => LoanDocumentPage(),
+      page: () => Portal(
+        child: LoanDocumentPage(),
+      ),
       binding: LoanOnboardBinding(),
     ),
     GetPage(
       name: AppRoute.loanFinish,
       page: () => LoanFinishPage(),
+      binding: LoanOnboardBinding(),
+    ),
+    GetPage(
+      name: AppRoute.loanBanding,
+      page: () => LoanBandingPage(),
       binding: LoanOnboardBinding(),
     ),
     GetPage(

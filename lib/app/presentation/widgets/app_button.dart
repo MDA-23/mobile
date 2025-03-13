@@ -55,7 +55,7 @@ class AppButton extends StatelessWidget {
                 ? ColorConstants.slate[300]
                 : variant == AppButtonVariant.primary
                     ? ColorConstants.primary[500]
-                    : ColorConstants.primary[50]),
+                    : Color(0xffDFE6FF)),
         borderRadius: borderRadius ?? BorderRadius.circular(10.w),
         boxShadow: boxShadow,
       ),
