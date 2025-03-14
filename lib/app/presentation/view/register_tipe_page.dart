@@ -33,8 +33,11 @@ class RegisterTipePage extends GetView<RegisterController> {
                       child: Container(
                         decoration: BoxDecoration(
                           color: controller.tipeUsaha.value == 'Perseorangan'
-                              ? ColorConstants.primary[500]
+                              ? ColorConstants.primary[50]
                               : Colors.white,
+                          border: controller.tipeUsaha.value == 'Perseorangan'
+                              ? Border.all(color: ColorConstants.primary[500]!)
+                              : null,
                           borderRadius: BorderRadius.circular(8),
                           boxShadow: [
                             ColorConstants.shadow[1]!,
@@ -72,14 +75,17 @@ class RegisterTipePage extends GetView<RegisterController> {
                       },
                       child: Container(
                         decoration: BoxDecoration(
-                          color: controller.tipeUsaha.value == 'Badan Usaha'
-                              ? ColorConstants.primary[500]
-                              : Colors.white,
-                          borderRadius: BorderRadius.circular(8),
-                          boxShadow: [
-                            ColorConstants.shadow[1]!,
-                          ],
-                        ),
+                            color: controller.tipeUsaha.value == 'Badan Usaha'
+                                ? ColorConstants.primary[50]
+                                : Colors.white,
+                            borderRadius: BorderRadius.circular(8),
+                            boxShadow: [
+                              ColorConstants.shadow[1]!,
+                            ],
+                            border: controller.tipeUsaha.value == 'Badan Usaha'
+                                ? Border.all(
+                                    color: ColorConstants.primary[500]!)
+                                : null),
                         padding: EdgeInsets.all(16),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,

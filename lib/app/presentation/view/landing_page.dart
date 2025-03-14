@@ -3,9 +3,12 @@ import 'package:get/get.dart';
 import 'package:mobile/app/controller/landing_controller.dart';
 import 'package:mobile/app/presentation/widgets/app_button.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:mobile/app/services/api/fetch_data.dart';
+import 'package:mobile/app/services/api/request_method.dart';
 import 'package:mobile/routes/app_route.dart';
 import 'package:mobile/styles/color_constants.dart';
 import 'package:mobile/styles/text_styles.dart';
+import 'package:mobile/utils/show_alert.dart';
 
 class LandingPage extends GetView<LandingController> {
   const LandingPage({super.key});
@@ -74,7 +77,7 @@ class LandingPage extends GetView<LandingController> {
               SizedBox(height: 12.h),
               AppButton(
                 variant: AppButtonVariant.secondary,
-                onPressed: () {
+                onPressed: () async {
                   Get.toNamed(AppRoute.login);
                 },
                 text: "Masuk",
